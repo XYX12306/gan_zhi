@@ -1,0 +1,9 @@
+from building import *
+
+cwd     = GetCurrentDir()
+src     = Glob('*.c') + Glob('*.cpp')
+CPPPATH = [cwd]
+
+group = DefineGroup('gan_zhi', src, depend = ['GAN_ZHI_USING_EXAMPLE'], CPPPATH = CPPPATH)
+
+Return('group')
