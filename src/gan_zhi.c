@@ -270,17 +270,17 @@ signed char sun_hour2gan_zhi(int year, int month, int day, int hour, char *str_g
         return -1;
     gan_zhi_result = get_gan_zhi(year, month, day, hour);
 
-    strcat(str_gan_zhi, tian_gan_const[0x0F & (gan_zhi_result >> 28)]);
-    strcat(str_gan_zhi, di_zhi_const[0x0F & (gan_zhi_result >> 24)]);
+    strcat(str_gan_zhi, tian_gan_const[((gan_zhi_result >> 28) & 0x0F) % 10]);
+    strcat(str_gan_zhi, di_zhi_const[((gan_zhi_result >> 24) & 0x0F) % 12]);
     strcat(str_gan_zhi, "年");
-    strcat(str_gan_zhi, tian_gan_const[0x0F & (gan_zhi_result >> 20)]);
-    strcat(str_gan_zhi, di_zhi_const[0x0F & (gan_zhi_result >> 16)]);
+    strcat(str_gan_zhi, tian_gan_const[((gan_zhi_result >> 20) & 0x0F) % 10]);
+    strcat(str_gan_zhi, di_zhi_const[((gan_zhi_result >> 16) & 0x0F) % 12]);
     strcat(str_gan_zhi, "月");
-    strcat(str_gan_zhi, tian_gan_const[0x0F & (gan_zhi_result >> 12)]);
-    strcat(str_gan_zhi, di_zhi_const[0x0F & (gan_zhi_result >> 8)]);
+    strcat(str_gan_zhi, tian_gan_const[((gan_zhi_result >> 12) & 0x0F) % 10]);
+    strcat(str_gan_zhi, di_zhi_const[((gan_zhi_result >> 8) & 0x0F) % 12]);
     strcat(str_gan_zhi, "日");
-    strcat(str_gan_zhi, tian_gan_const[0x0F & (gan_zhi_result >> 4)]);
-    strcat(str_gan_zhi, di_zhi_const[0x0F & gan_zhi_result]);
+    strcat(str_gan_zhi, tian_gan_const[((gan_zhi_result >> 4) & 0x0F) % 10]);
+    strcat(str_gan_zhi, di_zhi_const[(gan_zhi_result & 0x0F) % 12]);
     strcat(str_gan_zhi, "时");
     return 0;
 }
